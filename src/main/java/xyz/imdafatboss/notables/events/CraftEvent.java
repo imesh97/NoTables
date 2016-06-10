@@ -27,19 +27,24 @@ public class CraftEvent implements Listener{
         cfg = new ConfigYML(plugin);
         Action a = e.getAction();
         Player p = e.getPlayer();
-        if(a == Action.RIGHT_CLICK_BLOCK){
 
-            if(e.getClickedBlock() != null) {
+        if(!cfg.canCraft()) {
+            
+            if (a == Action.RIGHT_CLICK_BLOCK) {
 
-                Block b = e.getClickedBlock();
-                if(b.getType() != null || b.getType() != Material.AIR){
+                if (e.getClickedBlock() != null) {
 
-                    if(b.getType() == Material.WORKBENCH){
+                    Block b = e.getClickedBlock();
+                    if (b.getType() != null || b.getType() != Material.AIR) {
 
-                        e.setCancelled(true);
-                        for(String s : cfg.getMessages()){
+                        if (b.getType() == Material.WORKBENCH) {
 
-                            p.sendMessage(Msg.translate(s));
+                            e.setCancelled(true);
+                            for (String s : cfg.getMessages()) {
+
+                                p.sendMessage(Msg.translate(s));
+
+                            }
 
                         }
 
