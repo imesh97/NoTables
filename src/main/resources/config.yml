@@ -1,0 +1,9 @@
+crafting-tables: false
+anvils: false
+enchantment-tables: false
+
+messages:
+  - '&bWE DONT LET YOU USE IT'
+  - '&BPLEASE DONT USE IT'
+  - '&BWE REMOVED THIS MECHANIC'
+  - '&BFOR A REASON!'
