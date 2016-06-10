@@ -4,17 +4,15 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import xyz.imdafatboss.notables.Home;
 import xyz.imdafatboss.notables.config.ConfigYML;
 import xyz.imdafatboss.notables.utils.Msg;
 
-public class CraftEvent implements Listener{
-
+public class AnvilEvent {
     Home plugin;
-    public CraftEvent(Home instance){
+    public AnvilEvent(Home instance){
 
         this.plugin = instance;
 
@@ -22,13 +20,13 @@ public class CraftEvent implements Listener{
     ConfigYML cfg;
 
     @EventHandler
-    public void onCraft(PlayerInteractEvent e){
+    public void onAnvil(PlayerInteractEvent e){
 
         cfg = new ConfigYML(plugin);
         Action a = e.getAction();
         Player p = e.getPlayer();
 
-        if(!cfg.canCraft()) {
+        if(!cfg.canAnvil()) {
 
             if (a == Action.RIGHT_CLICK_BLOCK) {
 
@@ -37,7 +35,7 @@ public class CraftEvent implements Listener{
                     Block b = e.getClickedBlock();
                     if (b.getType() != null || b.getType() != Material.AIR) {
 
-                        if (b.getType() == Material.WORKBENCH) {
+                        if (b.getType() == Material.ANVIL) {
 
                             e.setCancelled(true);
                             for (String s : cfg.getMessages()) {
